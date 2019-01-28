@@ -1,0 +1,30 @@
+<?php use Phalcon\Tag; ?>
+<div class="container">
+    <h2>Ваш профиль</h2>
+    <hr>
+    <div class="card">
+
+        <?php echo Tag::form("user/editInfo");
+            Tag::setDefault('first_name', $user->first_name);
+            Tag::setDefault('last_name', $user->last_name);
+        ?>
+
+        <p>
+            <label for="first_name">Имя</label>
+            <?php echo Tag::textField("first_name") ?>
+        </p>
+
+        <p>
+            <label for="last_name">Фамилия</label>
+            <?php echo Tag::textField("last_name") ?>
+        </p>
+
+        <p>
+            <?php echo Tag::submitButton("Изменить") ?>
+        </p>
+
+        </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Phalcon PHP Framework</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->url->get('img/favicon.ico')?>"/>
+    </head>
+    <body>
+    <!-- Header -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                </li>
+                <li class="nav-item active">
+                    <?php
+                    # Check User Login
+                    if ($this->session->has('IS_LOGIN'))
+                    {
+                        echo $this->tag->linkTo([
+                                "agent/add",
+                                '<i class="fa fa-plus" aria-hidden="true"></i> Добавить агента <span class="sr-only">(current)</span>',
+                                "class" => "nav-link"]
+                        );
+                    }
+                    ?>
+                </li>
+                <li class="nav-item active">
+                    <?php
+                    # Check User Login
+                    if ($this->session->has('IS_LOGIN'))
+                    {
+                        echo $this->tag->linkTo([
+                                "agent/view",
+                                '<i class="fa fa-cogs" aria-hidden="true"></i> Список агентов',
+                                "class" => "nav-link"]
+                        );
+                    }
+                    ?>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <?php
+                # Check User Login
+                if ($this->session->has('IS_LOGIN'))
+                {
+                    echo $this->tag->linkTo([
+                        "user/profile",
+                        '<i class="fa fa-user" aria-hidden="true"></i> Профиль',
+                        "class" => "btn btn-light"
+                    ]);
+                    echo "&nbsp;";
+                    echo $this->tag->linkTo([
+                        "user/logout",
+                        '<i class="fa fa-sign-out" aria-hidden="true"></i> Выход',
+                        "class" => "btn btn-danger"
+                    ]);
+                } else
+                {
+                    echo $this->tag->linkTo([
+                        "user/login",
+                        '<i class="fa fa-sign-in" aria-hidden="true"></i> Войти',
+                        "class" => "btn btn-light"
+                    ]);
+                    echo "&nbsp;";
+
+                    echo $this->tag->linkTo([
+                        "user/register",
+                        '<i class="fa fa-user-plus" aria-hidden="true"></i> Регистрация',
+                        "class" => "btn btn-outline-light"
+                    ]);
+                }
+                ?>
+            </form>
+        </div>
+    </nav>
+    <br>
+    <!-- Main Content -->
+    <?php echo $this->getContent(); ?>
+    <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>

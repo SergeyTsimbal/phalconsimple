@@ -1,0 +1,53 @@
+<?php
+if (!$form->isValid($_POST)) {
+    $messages = $form->getMessages();
+}
+?>
+
+<div class="container">
+    <h2>Регистрация</h2>
+
+    <p><?php echo $this->flashSession->output() ?></p>
+
+    <?php echo $this->tag->form("user/save"); ?>
+
+    <div class="form-group">
+        <label for="name">Имя</label>
+        <?php echo $form->render('first_name'); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Фамилия</label>
+        <?php echo $form->render('last_name'); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-Mail</label>
+        <?php echo $form->render('email'); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="key_curator">Ключ от куратора</label>
+        <?php echo $form->render('key_curator'); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Пароль</label>
+        <?php echo $form->render('password'); ?>
+    </div>
+
+    <div class="form-group">
+        <label for="password_confirm">Повторите пароль</label>
+        <?php echo $form->render('password_confirm'); ?>
+    </div>
+
+    <div class="form-group">
+        <?php echo $form->render('submit'); ?>
+    </div>
+
+    </form>
+
+    <a href='/'>Назад</a>
+    <?php if( isset($messages) && count($messages) > 0 && count($_POST) > 0) echo '<p style="color:red;">Проверьте правильность ввода полей</p>'; ?>
+</div>
+

@@ -1,0 +1,23 @@
+<div class="container">
+    <h2>Список вашых агентов</h2>
+    <?php if(count($agents) > 0){ ?>
+        <table border="1">
+            <tr>
+                <th>Имя</th>
+                <th>Фамилия</th>
+                <th>Email</th>
+                <th>Зарегистрировался</th>
+            </tr>
+    <?php } ?>
+    <?php foreach ($agents as $agent){?>
+        <tr>
+            <td><?php echo $agent->first_name ?></td>
+            <td><?php echo $agent->last_name  ?></td>
+            <td><?php echo $agent->email ?></td>
+            <td><?php echo $agent->password == '' ? 'Нет' : 'Да'; ?></td>
+        </tr>
+    <?php } ?>
+        <?php if(count($agents) > 0){ ?>
+        </table>
+        <?php } ?>
+</div>

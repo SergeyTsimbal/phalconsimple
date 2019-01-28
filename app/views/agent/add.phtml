@@ -1,0 +1,19 @@
+<?php use Phalcon\Tag; ?>
+
+<div class="container">
+    <h2>Отправить приглашение</h2>
+    <p><?php echo $this->flashSession->output() ?></p>
+    <?php echo Tag::form("agent/sendInvitation"); ?>
+
+    <p>
+        <label for="email">E-Mail</label>
+        <?php echo Tag::textField("email") ?>
+    </p>
+
+
+    <p>
+        <?php echo Tag::submitButton("Отправить") ?>
+    </p>
+
+    </form>
+</div>
